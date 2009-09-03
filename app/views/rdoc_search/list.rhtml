@@ -1,0 +1,21 @@
+<div id="sidebar">
+			
+	<h1>rdoc</h1>
+	<ul class="sidemenu">
+		<% @libraries.each do | library | %>
+			<li><%= link_to "#{library.name}:#{library.version}", :controller => :rdoc_search, :action => :list, :id => library.id %></li>
+		<% end %>			
+	</ul>
+</div>
+
+<div id="main"> 
+	
+	<h1><%= @library.name %> : <%= @library.version %> </h1>
+
+	<ul>
+	<% @ruby_methods.each do | ruby_method | %>
+		<li><%= link_to ruby_method.name, :action => :show, :id => ruby_method.id %></li>
+	<% end %>
+	</ul>
+	
+</div>

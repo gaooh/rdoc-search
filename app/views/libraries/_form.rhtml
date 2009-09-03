@@ -1,0 +1,19 @@
+
+<!--[form:library]-->
+<p><label for="library_repository_type">リポジトリタイプ</label>
+<%= select_tag "library[repository_type_id]", options_from_collection_for_select(@repository_types, "id", "name", @library.repository_type_id)%></p>
+
+<p><label for="library_url">URL</label>
+<%= text_field 'library', 'url', :size => 60 %></p>
+<p><%= error_message_on 'library', 'url' %></p>
+
+<p><label for="library_name">Name</label>
+<%= text_field 'library', 'name', :size => 20 %></p>
+<p><%= error_message_on 'library', 'name' %></p>
+
+<p><label for="library_version">Version</label>
+<%= text_field 'library', 'version', :size => 8 %></p>
+<p><%= error_message_on 'library', 'virsion' %></p>
+
+<!--[eoform:library]-->
+

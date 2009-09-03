@@ -1,0 +1,32 @@
+table {
+	width: 100%;
+	border: 1px solid #f2f2f2; 
+	background-color: #FAFAFA;
+	padding: 3px;
+}
+
+th {
+	border-bottom: 1px solid #f2f2f2; 
+}
+.formError {
+	color: #FF5E5E;
+}
+
+label {
+    display: block;
+    padding-left:32px;
+    background-position:8px center;
+    background-repeat:no-repeat;
+    background-color:#fff;
+    cursor:pointer;
+}
+
+/* Fancy Form */
+.checked{
+	background-color:#fff;
+	background-image:url(/images/fancyform/chk_on.png);
+}
+.unchecked{
+	background-color:#fff;
+	background-image:url(/images/fancyform/chk_off.png);
+}

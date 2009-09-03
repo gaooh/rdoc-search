@@ -1,0 +1,30 @@
+<h1>Listing libraries</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+	<th>Version</th>
+	<th>TYPE</th>
+	<th>URL</th>
+	<th></th>
+	<th></th>
+  </tr>
+  
+<% for library in @libraries %>
+  <tr>
+    <td><%=link_to library.name, :controller => :rdoc_search, :action => :list, :id => library.id %></td>
+	<td><%=h library.version %></td>
+	<td><%=h library.repository_type.name %></td>
+	<td><%=h library.url %></td>
+    <td><%= link_to 'Edit', :action => 'edit', :id => library %></td>
+    <td><%= link_to 'Destroy', { :action => 'destroy', :id => library }, :confirm => 'Are you sure?', :method => :post %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Previous page', { :page => @library_pages.current.previous } if @library_pages.current.previous %>
+<%= link_to 'Next page', { :page => @library_pages.current.next } if @library_pages.current.next %> 
+
+<br />
+
+<%= link_to 'New library', :action => 'new' %>

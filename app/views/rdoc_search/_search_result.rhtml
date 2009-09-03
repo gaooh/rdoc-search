@@ -1,0 +1,13 @@
+<% unless @ruby_methods.nil? %>
+<% for ruby_method in @ruby_methods %>
+<table>
+  <tr>
+    <td><%= link_to ruby_method.name, :action => :show, :id => ruby_method.id %></td>
+  </tr>
+  <tr>
+    <td align="right"><%= ruby_method.library.name %>:<%= ruby_method.library.version %></td>
+  </tr>
+</table>
+<br/>
+<% end %>
+<% end %>

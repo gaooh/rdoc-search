@@ -1,0 +1,40 @@
+<script type="text/javascript">
+	function libraryCheck(library_id) {
+		var item = $('library_' + library_id)
+		if (Element.hasClassName(item, "checked")) { 
+			Element.removeClassName(item, 'checked'); 
+			Element.addClassName(item, 'unchecked');
+			<%= remote_function( :url => {:action => 'remove_target_library'}, :with =>"'id=' + library_id") %>
+		} else {
+			Element.removeClassName(item, 'unchecked'); 
+			Element.addClassName(item, 'checked');
+			<%= remote_function( :url => {:action => 'add_target_library'}, :with =>"'id=' + library_id") %>
+		}
+	}
+</script>
+
+<div id="sidebar">
+			
+	<h1>rdoc</h1>
+	<% @libraries.each do | library | %>
+		<label id="library_<%= library.id %>" class="<% if @libraries_use_check.include?(library.id.to_s) %>checked<% else %>unchecked<% end %>">
+		<input type="checkbox" style="position: absolute; left: -9999px;" onclick="libraryCheck(<%= library.id %>)">
+		<%= "#{library.name}:#{library.version}"%></label>
+	<% end %>
+</div>
+
+<div id="main"> 		
+	
+	<h1>検索</h1>
+	
+	<% form_tag({:action => 'search'}, {:method => 'post'}) do %>
+		<%= text_field_tag :phrase, @phrase, :size => 50 %>
+		<%= observe_field(:phrase, :frequency => 0.5, :update => :results, :url => {:action => :ajax_search}) %>
+		<%= submit_tag 'Search' %>
+	<% end %>
+	
+	<div id="results">
+		<%= render :partial => 'search_result' %>
+	</div>
+	
+</div>
